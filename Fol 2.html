@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcos Herrero Calderón - Portafolio Profesional</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #1a365d;
+            --secondary-color: #2d6bc3;
+            --accent-color: #f59e0b;
+            --light-color: #f8fafc;
+            --dark-color: #1e293b;
+            --gray-color: #64748b;
+        }
+
+        body {
+            background-color: #f1f5f9;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        /* Header y Navegación */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo i {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: rgba(255, 255, 255, 0.15);
+            color: var(--accent-color);
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Sección Principal */
+        .hero {
+            padding: 3rem 0;
+            background-color: white;
+            margin-bottom: 2rem;
+            border-radius: 0 0 15px 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+        }
+
+        .profile-img {
+            flex-shrink: 0;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid var(--secondary-color);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .profile-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-text h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .hero-text p {
+            color: var(--gray-color);
+            margin-bottom: 1.5rem;
+            max-width: 600px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--dark-color);
+        }
+
+        .contact-item i {
+            color: var(--secondary-color);
+        }
+
+        /* Secciones de contenido */
+        .section {
+            background-color: white;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 3px solid var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: var(--accent-color);
+        }
+
+        /* Estilos específicos para cada sección */
+        #curriculum .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .info-card {
+            background-color: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .info-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-card ul {
+            padding-left: 1.2rem;
+        }
+
+        .info-card li {
+            margin-bottom: 0.5rem;
+        }
+
+        .language-level {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+        }
+
+        .language-level span:last-child {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        /* Carta Motivacional */
+        .motivational-letter {
+            line-height: 1.8;
+            max-width: 800px;
+        }
+
+        .letter-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .letter-content {
+            margin-bottom: 2rem;
+        }
+
+        .letter-signature {
+            text-align: right;
+            font-style: italic;
+            margin-top: 3rem;
+        }
+
+        /* IPOP */
+        .ipop-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .ipop-card {
+            background-color: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+            height: 100%;
+        }
+
+        .ipop-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* MY EURES (Páginas 4 y 5 juntas) */
+        .job-offers-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .job-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .job-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.2rem;
+        }
+
+        .job-header h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .job-company {
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        .job-body {
+            padding: 1.5rem;
+        }
+
+        .job-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            background-color: #f8fafc;
+            padding: 1rem;
+            border-radius: 6px;
+        }
+
+        .job-detail-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .job-detail-label {
+            font-size: 0.85rem;
+            color: var(--gray-color);
+        }
+
+        .job-detail-value {
+            font-weight: 600;
+            color: var(--dark-color);
+        }
+
+        .pros-cons {
+            margin-top: 1.5rem;
+        }
+
+        .pros-cons h4 {
+            color: var(--primary-color);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .pros-cons ul {
+            padding-left: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .pros li {
+            color: #10b981;
+        }
+
+        .cons li {
+            color: #ef4444;
+        }
+
+        /* Perfil Profesional */
+        .profile-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .profile-section {
+            background-color: var(--light-color);
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+
+        /* DAFO */
+        .dafo-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .dafo-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .dafo-card {
+            padding: 1.5rem;
+            border-radius: 8px;
+            border-top: 4px solid;
+        }
+
+        .strengths {
+            border-color: #10b981;
+            background-color: rgba(16, 185, 129, 0.05);
+        }
+
+        .weaknesses {
+            border-color: #ef4444;
+            background-color: rgba(239, 68, 68, 0.05);
+        }
+
+        .opportunities {
+            border-color: #3b82f6;
+            background-color: rgba(59, 130, 246, 0.05);
+        }
+
+        .threats {
+            border-color: #f59e0b;
+            background-color: rgba(245, 158, 11, 0.05);
+        }
+
+        .dafo-card h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .contact-info {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: var(--primary-color);
+                flex-direction: column;
+                padding: 1rem 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            nav ul.show {
+                display: flex;
+            }
+
+            nav a {
+                padding: 1rem;
+                justify-content: center;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .job-offers-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header con Navegación -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-user-tie"></i>
+                    <span>Marcos Herrero</span>
+                </div>
+                
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                
+                <nav>
+                    <ul id="navMenu">
+                        <li><a href="#curriculum" class="nav-link active" data-target="curriculum"><i class="fas fa-file-alt"></i> CV</a></li>
+                        <li><a href="#carta" class="nav-link" data-target="carta"><i class="fas fa-envelope"></i> Carta Motivacional</a></li>
+                        <li><a href="#ipop" class="nav-link" data-target="ipop"><i class="fas fa-bullseye"></i> IPOP</a></li>
+                        <li><a href="#myeures" class="nav-link" data-target="myeures"><i class="fas fa-briefcase"></i> MY EURES</a></li>
+                        <li><a href="#perfil" class="nav-link" data-target="perfil"><i class="fas fa-user"></i> Perfil Profesional</a></li>
+                        <li><a href="#dafo" class="nav-link" data-target="dafo"><i class="fas fa-chart-bar"></i> Matriz DAFO</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección Principal/Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="profile-img">
+                    <!-- Imagen de perfil placeholder -->
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80" alt="Marcos Herrero Calderón">
+                </div>
+                <div class="hero-text">
+                    <h1>Marcos Herrero Calderón</h1>
+                    <div class="subtitle">Técnico en Sistemas Microinformáticos y Redes | Gestión de Proyectos</div>
+                    <p>Joven profesional en formación con competencias técnicas en sistemas microinformáticos y redes, gestión de proyectos, trabajo en equipo y comunicación efectiva. Motivado por desarrollarme en entornos dinámicos del sector tecnológico.</p>
+                    
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Els Pallaresos, Tarragona</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <span>629 660 853</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <span>marcosherrero2008@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contenido Principal -->
+    <main class="container">
+        <!-- Sección 1: CV -->
+        <section id="curriculum" class="section active">
+            <h2 class="section-title"><i class="fas fa-file-alt"></i> Currículum Vitae</h2>
+            <div class="content-grid">
+                <div class="info-card">
+                    <h3><i class="fas fa-user"></i> Datos Personales</h3>
+                    <p><strong>Nombre:</strong> Marcos Herrero Calderón</p>
+                    <p><strong>Fecha de nacimiento:</strong> 14/02/2008</p>
+                    <p><strong>Lugar de nacimiento:</strong> Tarragona, España</p>
+                    <p><strong>Dirección:</strong> C/ Gaudí N° 96, Els Pallaresos, Tarragona 43151</p>
+                    <p><strong>Teléfono:</strong> 629 660 853</p>
+                    <p><strong>Email:</strong> marcosherrero2008@gmail.com</p>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-graduation-cap"></i> Formación Académica</h3>
+                    <ul>
+                        <li><strong>Ciclo Formativo de Grado Medio, Técnico en Sistemas Microinformáticos y Redes (SMR)</strong><br>IES Vidal i Barraquer, Tarragona (Septiembre 2024 - Actualidad)</li>
+                        <li><strong>Título de Graduado en Educación Secundaria (ESO)</strong><br>IES Els Pallaresos, Tarragona (2020 - 2024)</li>
+                        <li><strong>Título de Graduado en Educación Primaria</strong><br>Colegio San Sebastià, Els Pallaresos (2013 - 2020)</li>
+                    </ul>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-language"></i> Competencias Lingüísticas</h3>
+                    <div class="language-level">
+                        <span>Castellano (Español)</span>
+                        <span>Nativo</span>
+                    </div>
+                    <div class="language-level">
+                        <span>Catalán</span>
+                        <span>Nativo / Bilingüe</span>
+                    </div>
+                    <div class="language-level">
+                        <span>Inglés</span>
+                        <span>Intermedio (A1-A2)</span>
+                    </div>
+                </div>
+                
+                <div class="info-card">
+                    <h3><i class="fas fa-star"></i> Habilidades</h3>
+                    <ul>
+                        <li>Gestión de proyectos</li>
+                        <li>Trabajo en equipo</li>
+                        <li>Comunicación efectiva y resolución de problemas</li>
+                        <li>Iniciativa y dinamismo</li>
+                        <li>Flexibilidad para distintas funciones</li>
+                        <li>Capacidad de liderazgo y dirección de equipos</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 2: Carta Motivacional -->
+        <section id="carta" class="section">
+            <h2 class="section-title"><i class="fas fa-envelope"></i> Carta Motivacional</h2>
+            <div class="motivational-letter">
+                <div class="letter-header">
+                    <h3>Marcos Herrero Calderón</h3>
+                    <p>C/ Gaudí, N° 96, 43151 Els Pallaresos, Tarragona</p>
+                    <p>Tel.: 629 660 853 • Email: marcosherrero2008@gmail.com</p>
+                    <p>Els Pallaresos, 14 de diciembre de 2025</p>
+                </div>
+                
+                <div class="letter-content">
+                    <p>Estimados/as responsables de selección:</p>
+                    
+                    <p>Me dirijo a ustedes con el objetivo de expresar mi motivación e interés en formar parte de su empresa.</p>
+                    
+                    <p>Actualmente curso el Ciclo Formativo de Grado Medio en Sistemas Microinformáticos y Redes en el IES Vidal i Barraquer, lo que me permite adquirir conocimientos técnicos actualizados y aplicarlos en entornos profesionales.</p>
+                    
+                    <p>A lo largo de mi formación he desarrollado competencias clave como la capacidad de trabajo en equipo, la comunicación efectiva y la resolución de problemas. Además, mi dominio de castellano y catalán como lenguas nativas, junto con un nivel intermedio de inglés en constante mejora, me permiten adaptarme a contextos diversos y comunicarme con claridad en diferentes ámbitos.</p>
+                    
+                    <p>Me considero una persona responsable, dinámica y con iniciativa, cualidades que me impulsan a asumir nuevos retos y a contribuir de manera positiva en cualquier proyecto. Estoy convencido de que mi perfil puede aportar valor a su organización, tanto en el ámbito técnico como en el humano.</p>
+                    
+                    <p>Quedo a su disposición para ampliar esta información en una entrevista personal y agradecería la oportunidad de demostrar mi compromiso y entusiasmo por crecer junto a su equipo.</p>
+                </div>
+                
+                <div class="letter-signature">
+                    <p>Un cordial saludo,</p>
+                    <p><strong>Marcos Herrero Calderón</strong></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 3: IPOP -->
+        <section id="ipop" class="section">
+            <h2 class="section-title"><i class="fas fa-bullseye"></i> IPOP (Identidad, Propósito, Oferta, Público)</h2>
+            <div class="ipop-container">
+                <div class="ipop-card">
+                    <h3><i class="fas fa-id-card"></i> 1. IDENTIDAD</h3>
+                    <p>Mi nombre es Marcos Herrero Calderón y actualmente curso el Ciclo Formativo de Grado Medio en Sistemas Microinformáticos y Redes en el IES Vidal i Barraquer, Tarragona. A lo largo de mi trayectoria académica he completado la Educación Secundaria Obligatoria en el IES Els Pallaresos y la Educación Primaria en el CEIP San Sebastià. Mi formación me ha permitido adquirir una base sólida en informática, comunicación y trabajo en equipo, que ahora busco aplicar en un entorno profesional.</p>
+                </div>
+                
+                <div class="ipop-card">
+                    <h3><i class="fas fa-bullseye"></i> 2. PROPÓSITO</h3>
+                    <p>Mi propósito es incorporarme al sector tecnológico y de gestión de proyectos, donde pueda poner en práctica mis conocimientos técnicos y mis competencias personales. Estoy motivado por aprender continuamente, asumir nuevos retos y aportar valor a la empresa en la que me integre. Mi objetivo inmediato es iniciar mi carrera profesional en un puesto que me permita crecer y desarrollar mis capacidades.</p>
+                </div>
+                
+                <div class="ipop-card">
+                    <h3><i class="fas fa-gift"></i> 3. OFERTA</h3>
+                    <p>Para alcanzar este propósito, cuento con una combinación de formación académica y habilidades personales: formación técnica en sistemas microinformáticos y redes, certificaciones en gestión de proyectos y comunicación efectiva, competencias lingüísticas (castellano y catalán nativos, inglés intermedio), habilidades personales (iniciativa, dinamismo, responsabilidad, liderazgo, trabajo en equipo) y disponibilidad y flexibilidad para adaptarme a distintas funciones y entornos laborales.</p>
+                </div>
+                
+                <div class="ipop-card">
+                    <h3><i class="fas fa-users"></i> 4. PÚBLICO</h3>
+                    <p>Mi proyección a futuro es consolidar mi experiencia en el ámbito tecnológico, especializarme en gestión de proyectos y alcanzar un nivel avanzado de inglés que me permita acceder a oportunidades internacionales. Aspiro a convertirme en un profesional capaz de liderar equipos, resolver problemas de manera eficaz y contribuir al crecimiento de la organización en la que trabaje.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 4: MY EURES (Páginas 4 y 5 juntas) -->
+        <section id="myeures" class="section">
+            <h2 class="section-title"><i class="fas fa-briefcase"></i> MY EURES - Análisis de Ofertas de Empleo</h2>
+            <div class="job-offers-container">
+                <!-- Oferta 1: Técnico IT Móvil en París -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <h3>Técnico IT Móvil (H/F)</h3>
+                        <div class="job-company">París, Francia</div>
+                        <div class="job-date">Actualizado: 25/03/2025</div>
+                    </div>
+                    <div class="job-body">
+                        <div class="job-details">
+                            <div class="job-detail-item">
+                                <span class="job-detail-label">Tipo de contrato</span>
+                                <span class="job-detail-value">Contratación directa</span>
+                            </div>
+                            <div class="job-detail-item">
+                                <span class="job-detail-label">Jornada</span>
+                                <span class="job-detail-value">Completa</span>
+                            </div>
+                            <div class="job-detail-item">
+                                <span class="job-detail-label">Salario</span>
+                                <span class="job-detail-value">30.000 - 36.000 €/año</span>
+                            </div>
+                            <div class="job-detail-item">
+                                <span class="job-detail-label">Sector</span>
+                                <span class="job-detail-value">Servicios técnicos</span>
+                            </div>
+                        </div>
+                        
+                        <div class="pros-cons">
+                            <div class="pros">
+                                <h4><i class="fas fa-thumbs-up"></i> Lo bueno del puesto:</h4>
+                                <ul>
+                                    <li>Trabajo variado: reparaciones técnicas, visitas a clientes, instalación de equipos</li>
+                                    <li>Contrato fijo (CDI) y formación continua</li>
+                                    <li>Posibilidades de crecimiento dentro de la empresa</li>
+                                    <li>Salario acorde a la experiencia solicitada</li>
+                                    <li>Programa de salud y deporte para empleados</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="cons">
+                                <h4><i class="fas fa-thumbs-down"></i> Cosas a tener en cuenta:</h4>
+                                <ul>
+                                    <li>Trabajo móvil: requiere coche y carnet de conducir tipo B</li>
+                                    <li>Se requiere experiencia en resolución de problemas técnicos básicos</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <p><strong>Resumen:</strong> Es un trabajo estable, con futuro y donde no te aburrirás. Ideal si te gusta un trabajo activo, fuera de la oficina, y quieres hacer carrera en una empresa.</p>
+                    </div>
+                </div>
+                
+                <!-- Oferta 2: Consultor IT -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <h3>Consultor IT (H/F)</h3>
+                        <div class="job-company">FORTIL SUD OUEST</div>
+                        <div class="job-date">Actualizado: 25/03/2025</div>
+                    </div>
+                    <div class="job-body">
+                        <div class="job-details">
+                            <div class="job-detail-item">
+                                <span class="job-detail-label">Tipo de contrato</span>
+                                <span class="job-detail-value">Contratación directa</span>
+                            </div>
+                            <div class="job-detail-item">
+                                <span class="job-detail-label">Jornada</span>
+                                <span class="job-detail-value">Completa</span>
+                            </div>
+                            <div class="job-detail-item">
+                                <span class="job-detail-label">Salario</span>
+                                <span class="job-detail-value">35.000 - 55.000 €/año</span>
+                            </div>
+                            <div class="job-detail-item">
+                                <span class="job-detail-label">Sector</span>
+                                <span class="job-detail-value">Consultoría de gestión</span>
+                            </div>
+                        </div>
+                        
+                        <div class="pros-cons">
+                            <div class="pros">
+                                <h4><i class="fas fa-thumbs-up"></i> Lo bueno de este puesto:</h4>
+                                <ul>
+                                    <li>Trabajo más estratégico con mejor proyección a largo plazo</li>
+                                    <li>Mayor responsabilidad y visión completa de proyectos</li>
+                                    <li>Salario más alto con posibilidad de crecimiento</li>
+                                    <li>Camino hacia puestos de jefe de proyecto, arquitecto o manager</li>
+                                    <li>Aprendizaje continuo al enfrentar diversos problemas empresariales</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <p><strong>Descripción del puesto:</strong> Análisis y diagnóstico de necesidades del cliente, identificación de puntos de mejora, elaboración de estrategias y planes de acción, acompañamiento en la implementación de soluciones, formación de equipos y seguimiento de resultados.</p>
+                    </div>
+                </div>
+                
+                <!-- Oferta 3: Técnico IT Itinerante -->
+                <div class="job-card">
+                    <div class="job-header">
+                        <h3>Técnico IT Itinerante (H/F)</h3>
+                        <div class="job-company">AK RECRUTEMENT</div>
+                        <div class="job-date">Actualizado: 18/03/2025</div>
+                    </div>
+                    <div class="job-body">
+                        <div class="job-details">
+                            <div class="job-detail-item">
+                                <span class="job-detail-label">Tipo de contrato</span>
+                                <span class="job-detail-value">Contratación directa</span>
+                            </div>
+                            <div class="job-detail-item">
+                                <span class="job-detail-label">Jornada</span>
+                                <span class="job-detail-value">Completa</span>
+                            </div>
+                            <div class="job-detail-item">
+                                <span class="job-detail-label">Sector</span>
+                                <span class="job-detail-value">Consultoría empresarial</span>
+                            </div>
+                            <div class="job-detail-item">
+                                <span class="job-detail-label">Ocupación</span>
+                                <span class="job-detail-value">Técnico de TIC</span>
+                            </div>
+                        </div>
+                        
+                        <p><strong>Descripción del puesto:</strong> Trabajo en una empresa ETI en el ámbito de ITT (Bureautique, Cloud et Logiciels). Vinculado a la Dirección técnica y apoyado por el equipo de soporte, realizarás intervenciones en sitio encargándote de la actualización del parque de hardware y software, y de la configuración de puestos de trabajo.</p>
+                        
+                        <div class="pros-cons">
+                            <h4><i class="fas fa-lightbulb"></i> Mi análisis:</h4>
+                            <p>Esta oferta representa un paso adelante en mi carrera profesional. Sería un trabajo más estratégico y con mejor proyección a largo plazo que el de Técnico IT. No se trata solo de arreglar ordenadores, sino de asesorar a empresas, analizar sus necesidades, diseñar planes de mejora tecnológica y ayudar en su implementación. Es un rol de "cerebro" más que de "manos".</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección 5: Perfil Profesional -->
+        <section id="perfil" class="section">
+            <h2 class="section-title"><i class="fas fa-user"></i> Perfil Profesional</h2>
+            <div class="profile-container">
+                <div class="profile-section">
+                    <h3><i class="fas fa-id-badge"></i> Datos Personales</h3>
+                    <p><strong>Nombre:</strong> Marcos Herrero Calderón</p>
+                    <p><strong>Documento de identidad:</strong> 49420477D</p>
+                    <p><strong>Permiso de trabajo:</strong> Española</p>
+                    <p><strong>Fecha de nacimiento:</strong> 14/02/2008</p>
+                    <p><strong>Lugar de nacimiento:</strong> Els Pallaresos, Tarragona</p>
+                    <p><strong>Nacionalidad:</strong> Española</p>
+                    <p><strong>Género:</strong> Masculino</p>
+                </div>
+                
+                <div class="profile-section">
+                    <h3><i class="fas fa-user-circle"></i> Perfil Profesional</h3>
+                    <p>Joven profesional en formación con formación técnica en sistemas microinformáticos y redes. Con competencias en gestión de proyectos, trabajo en equipo, comunicación efectiva y liderazgo. Motivado por desarrollarme en entornos dinámicos y seguir aprendiendo en el ámbito tecnológico y de la gestión.</p>
+                    
+                    <h4><i class="fas fa-certificate"></i> Certificaciones</h4>
+                    <ul>
+                        <li><strong>Certificación en Gestión de Proyectos</strong><br>Instituto de Proyectos Avanzados, Mayo 2021</li>
+                        <li><strong>Certificación en Comunicación Efectiva</strong><br>Universidad Nacional, Marzo 2020</li>
+                    </ul>
+                </div>
+                
+                <div class="profile-section">
+                    <h3><i class="fas fa-tools"></i> Competencias</h3>
+                    <h4>Idiomas</h4>
+                    <ul>
+                        <li><strong>Español:</strong> Nativo</li>
+                        <li><strong>Catalán:</strong> Nativo / Bilingüe</li>
+                        <li><strong>Inglés:</strong> Intermedio (A1-A2)</li>
+                    </ul>
+                    
+                    <h4>Competencias sociales y organizativas</h4>
+                    <ul>
+                        <li>Gestión de proyectos</li>
+                        <li>Trabajo en equipo</li>
+                        <li>Comunicación efectiva y resolución de problemas</li>
+                       
