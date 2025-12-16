@@ -1,0 +1,143 @@
+        <!-- Sección 7: DAFO Personal -->
+        <section id="dafo" class="content-section">
+            <h2><i class="fas fa-chart-bar"></i> Análisis DAFO Personal</h2>
+            
+            <div class="swot-grid">
+                <div class="swot-category strengths">
+                    <h3><i class="fas fa-thumbs-up"></i> Fortalezas</h3>
+                    <ul class="swot-list">
+                        <li>Dominio nativo de castellano y catalán, con nivel intermedio de inglés en proceso de mejora.</li>
+                        <li>Formación técnica en Sistemas Microinformáticos y Redes (SMR).</li>
+                        <li>Certificaciones en Gestión de Proyectos y Comunicación Efectiva.</li>
+                        <li>Habilidades personales: iniciativa, dinamismo, responsabilidad, capacidad de liderazgo y trabajo en equipo.</li>
+                        <li>Alta motivación y disponibilidad para asumir nuevas funciones.</li>
+                    </ul>
+                </div>
+                
+                <div class="swot-category weaknesses">
+                    <h3><i class="fas fa-thumbs-down"></i> Debilidades</h3>
+                    <ul class="swot-list">
+                        <li>Experiencia laboral aún limitada debido a la edad y etapa formativa.</li>
+                        <li>Nivel de inglés todavía intermedio, lo que puede restringir acceso a entornos internacionales.</li>
+                        <li>Necesidad de seguir desarrollando competencias técnicas avanzadas y especialización.</li>
+                        <li>Dependencia inicial de orientación y supervisión en entornos profesionales.</li>
+                    </ul>
+                </div>
+                
+                <div class="swot-category opportunities">
+                    <h3><i class="fas fa-bullseye"></i> Oportunidades</h3>
+                    <ul class="swot-list">
+                        <li>Creciente demanda de perfiles técnicos en informática y gestión de proyectos.</li>
+                        <li>Posibilidad de realizar prácticas profesionales que aporten experiencia real.</li>
+                        <li>Acceso a formación complementaria en idiomas y nuevas tecnologías.</li>
+                        <li>Entorno laboral en expansión en el sector tecnológico en Tarragona y alrededores.</li>
+                        <li>Oportunidad de diferenciarse por juventud, motivación y capacidad de aprendizaje rápido.</li>
+                    </ul>
+                </div>
+                
+                <div class="swot-category threats">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Amenazas</h3>
+                    <ul class="swot-list">
+                        <li>Alta competencia en el mercado laboral, incluso para puestos de entrada.</li>
+                        <li>Rápida evolución tecnológica que exige actualización constante.</li>
+                        <li>Posibles barreras de idioma en empresas multinacionales.</li>
+                        <li>Inestabilidad económica que puede limitar ofertas de empleo para perfiles junior.</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="margin-top: 40px; padding: 25px; background-color: #f9f9f9; border-radius: 10px; border: 1px solid #e0e0e0;">
+                <h4><i class="fas fa-lightbulb"></i> Estrategias a partir del análisis DAFO</h4>
+                <p><strong>Estrategia ofensiva (Fortalezas + Oportunidades):</strong> Aprovechar mi juventud, motivación y formación técnica para acceder a prácticas profesionales en empresas tecnológicas en expansión en Tarragona, mientras sigo mejorando mi nivel de inglés.</p>
+                <p><strong>Estrategia defensiva (Debilidades + Amenazas):</strong> Complementar mi formación con cursos especializados y mantener una actitud de aprendizaje continuo para compensar la falta de experiencia inicial y mantenerme competitivo ante la rápida evolución tecnológica.</p>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container footer-content">
+            <h3>Marcos Herrero Calderón</h3>
+            <p>Técnico en Sistemas Microinformáticos y Redes | Gestión de Proyectos</p>
+            <div class="contact-info" style="justify-content: center; margin-top: 15px;">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>629 660 853</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>marcosherrero2008@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Els Pallaresos, Tarragona</span>
+                </div>
+            </div>
+            <div class="copy">
+                &copy; 2025 - Currículum profesional. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Función para cambiar entre secciones
+        document.addEventListener('DOMContentLoaded', function() {
+            // Obtener todos los enlaces del menú
+            const menuLinks = document.querySelectorAll('.menu a');
+            
+            // Obtener todas las secciones de contenido
+            const contentSections = document.querySelectorAll('.content-section');
+            
+            // Función para mostrar una sección específica
+            function showSection(sectionId) {
+                // Ocultar todas las secciones
+                contentSections.forEach(section => {
+                    section.classList.remove('active');
+                });
+                
+                // Mostrar la sección seleccionada
+                const targetSection = document.getElementById(sectionId);
+                if (targetSection) {
+                    targetSection.classList.add('active');
+                }
+                
+                // Actualizar el enlace activo en el menú
+                menuLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('data-target') === sectionId) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                // Actualizar el hash en la URL
+                window.location.hash = sectionId;
+            }
+            
+            // Agregar evento de clic a cada enlace del menú
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetSection = this.getAttribute('data-target');
+                    showSection(targetSection);
+                });
+            });
+            
+            // Verificar si hay un hash en la URL al cargar la página
+            if (window.location.hash) {
+                const sectionId = window.location.hash.substring(1); // Eliminar el #
+                showSection(sectionId);
+            } else {
+                // Mostrar la primera sección por defecto
+                showSection('cv');
+            }
+            
+            // También permitir navegación con los botones de atrás/adelante del navegador
+            window.addEventListener('hashchange', function() {
+                const sectionId = window.location.hash.substring(1);
+                if (sectionId) {
+                    showSection(sectionId);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
